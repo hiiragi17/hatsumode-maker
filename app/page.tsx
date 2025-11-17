@@ -78,7 +78,7 @@ export default function Home() {
           // 結果画面
           <div className="w-full max-w-2xl space-y-8 animate-fade-in">
             <ResultCard temple={selectedTemple} comment={selectedComment} />
-            <ShareButton temple={selectedTemple} />
+            <ShareButton temple={selectedTemple} comment={selectedComment} />
 
             {/* もう一度ボタン */}
             <div className="text-center">

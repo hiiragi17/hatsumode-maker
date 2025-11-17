@@ -6,9 +6,10 @@ import { generateImage, downloadImage } from '@/lib/generateImage';
 
 interface ShareButtonProps {
   temple: Temple;
+  comment?: string;
 }
 
-export default function ShareButton({ temple }: ShareButtonProps) {
+export default function ShareButton({ temple, comment = 'エンジニア運勢' }: ShareButtonProps) {
   const [isGenerating, setIsGenerating] = useState(false);
 
   const handleDownload = async () => {
@@ -25,9 +26,22 @@ export default function ShareButton({ temple }: ShareButtonProps) {
   };
 
   const handleShare = () => {
+    // シェアリングページのURL
+    const baseUrl = typeof window !== 'undefined' ? window.location.origin : 'https://hatsumode-maker.vercel.app';
+    const shareUrl = new URL(`${baseUrl}/share`);
+    shareUrl.searchParams.append('temple', temple.name);
+    shareUrl.searchParams.append('area', temple.area);
+    shareUrl.searchParams.append('comment', comment);
+
+    // ツイートテキスト
     const text = `AI初詣メーカー2025で初詣先を決めてもらいました！\nあなたの初詣先は「${temple.name}」⛩️\n\n#AI初詣メーカー2025`;
-    const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
-    window.open(url, '_blank', 'noopener,noreferrer');
+
+    // ツイート意図URL
+    const tweetUrl = new URL('https://twitter.com/intent/tweet');
+    tweetUrl.searchParams.append('text', text);
+    tweetUrl.searchParams.append('url', shareUrl.toString());
+
+    window.open(tweetUrl.toString(), '_blank', 'noopener,noreferrer');
   };
 
   return (
