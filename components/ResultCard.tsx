@@ -2,9 +2,10 @@ import { Temple } from '@/lib/temples';
 
 interface ResultCardProps {
   temple: Temple;
+  comment: string;
 }
 
-export default function ResultCard({ temple }: ResultCardProps) {
+export default function ResultCard({ temple, comment }: ResultCardProps) {
   return (
     <div
       id="result-card"
@@ -29,6 +30,14 @@ export default function ResultCard({ temple }: ResultCardProps) {
           </p>
           <p className="text-lg md:text-xl text-shrine-gold">
             （{temple.area}）
+          </p>
+        </div>
+
+        {/* エンジニア専用コメント */}
+        <div className="px-4 py-6 bg-white/5 rounded-lg border border-shrine-gold/30">
+          <p className="text-xs text-shrine-gold/80 mb-2 font-bold">💻 エンジニア運勢</p>
+          <p className="text-sm md:text-base text-white/90 leading-relaxed">
+            {comment}
           </p>
         </div>
 

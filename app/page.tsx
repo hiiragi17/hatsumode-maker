@@ -1,12 +1,13 @@
 'use client';
 
 import { useState } from 'react';
-import { chooseRandomTemple, Temple } from '@/lib/temples';
+import { chooseRandomTemple, chooseRandomComment, Temple } from '@/lib/temples';
 import ResultCard from '@/components/ResultCard';
 import ShareButton from '@/components/ShareButton';
 
 export default function Home() {
   const [selectedTemple, setSelectedTemple] = useState<Temple | null>(null);
+  const [selectedComment, setSelectedComment] = useState<string>('');
   const [isRolling, setIsRolling] = useState(false);
 
   const handleChoose = () => {
@@ -14,13 +15,16 @@ export default function Home() {
     // アニメーション効果のために少し遅延
     setTimeout(() => {
       const temple = chooseRandomTemple();
+      const comment = chooseRandomComment();
       setSelectedTemple(temple);
+      setSelectedComment(comment);
       setIsRolling(false);
     }, 1000);
   };
 
   const handleReset = () => {
     setSelectedTemple(null);
+    setSelectedComment('');
   };
 
   return (
@@ -73,7 +77,7 @@ export default function Home() {
         ) : (
           // 結果画面
           <div className="w-full max-w-2xl space-y-8 animate-fade-in">
-            <ResultCard temple={selectedTemple} />
+            <ResultCard temple={selectedTemple} comment={selectedComment} />
             <ShareButton temple={selectedTemple} />
 
             {/* もう一度ボタン */}
