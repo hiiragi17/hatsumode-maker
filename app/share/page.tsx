@@ -21,11 +21,11 @@ export async function generateMetadata(props: SharePageProps): Promise<Metadata>
   ogpImageUrl.searchParams.append('comment', comment);
 
   return {
-    title: `${temple} | AI初詣メーカー2025`,
-    description: `AI初詣メーカー2025であなたの初詣先は「${temple}」に決定しました！エンジニア運勢：${comment}`,
+    title: `${temple} | AI初詣メーカー2026`,
+    description: `AI初詣メーカー2026であなたの初詣先は「${temple}」に決定しました！エンジニア運勢：${comment}`,
     openGraph: {
-      title: `${temple} | AI初詣メーカー2025`,
-      description: `AI初詣メーカー2025であなたの初詣先は「${temple}」に決定しました！`,
+      title: `${temple} | AI初詣メーカー2026`,
+      description: `AI初詣メーカー2026であなたの初詣先は「${temple}」に決定しました！`,
       type: 'website',
       images: [
         {
@@ -39,8 +39,8 @@ export async function generateMetadata(props: SharePageProps): Promise<Metadata>
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${temple} | AI初詣メーカー2025`,
-      description: `AI初詣メーカー2025であなたの初詣先は「${temple}」に決定しました！`,
+      title: `${temple} | AI初詣メーカー2026`,
+      description: `AI初詣メーカー2026であなたの初詣先は「${temple}」に決定しました！`,
       images: [ogpImageUrl.toString()],
     },
   };
@@ -53,7 +53,7 @@ export default function SharePage({ searchParams }: SharePageProps) {
     <main className="min-h-screen bg-gradient-to-b from-gray-900 via-purple-900 to-gray-900 flex items-center justify-center p-4">
       <div className="text-center space-y-8 max-w-2xl">
         <h1 className="text-5xl font-bold text-white drop-shadow-2xl">
-          🎍 AI初詣メーカー2025
+          🎍 AI初詣メーカー2026
         </h1>
 
         <div className="py-8 space-y-4">
@@ -78,7 +78,7 @@ export default function SharePage({ searchParams }: SharePageProps) {
             このページをツイートしてシェアできます
           </p>
           <a
-            href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(`AI初詣メーカー2025で初詣先を決めてもらいました！\\n${temple}（${area}）⛩️\\n\\n#AI初詣メーカー2025`)}&url=${encodeURIComponent(typeof window !== 'undefined' ? window.location.href : '')}`}
+            href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(`AI初詣メーカー2026で初詣先を決めてもらいました！\\n${temple}（${area}）⛩️\\n\\n#AI初詣メーカー2026`)}&url=${encodeURIComponent(typeof window !== 'undefined' ? window.location.href : '')}`}
             className="inline-block px-8 py-3 bg-blue-500 hover:bg-blue-600 text-white font-bold rounded-lg shadow-lg transition-all duration-200 transform hover:scale-105"
           >
             𝕏 でシェア

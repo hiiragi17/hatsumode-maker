@@ -43,7 +43,7 @@ export default function Home() {
             {/* タイトル */}
             <div className="space-y-4">
               <h1 className="text-5xl md:text-7xl font-bold text-white drop-shadow-2xl">
-                🎍 AI初詣メーカー2025
+                🎍 AI初詣メーカー2026
               </h1>
               <p className="text-xl md:text-2xl text-white/80">
                 AIがあなたの初詣先を強制的に決めます

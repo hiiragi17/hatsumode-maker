@@ -2,18 +2,18 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'AI初詣メーカー2025',
+  title: 'AI初詣メーカー2026',
   description: 'AIがあなたの初詣先を強制的に決める - エンジニア向けエンタメWebアプリ',
-  keywords: ['初詣', 'AI', '神社', '2025', 'おみくじ'],
+  keywords: ['初詣', 'AI', '神社', '2026', 'おみくじ'],
   openGraph: {
-    title: 'AI初詣メーカー2025',
+    title: 'AI初詣メーカー2026',
     description: 'AIがあなたの初詣先を強制的に決めます',
     type: 'website',
     locale: 'ja_JP',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'AI初詣メーカー2025',
+    title: 'AI初詣メーカー2026',
     description: 'AIがあなたの初詣先を強制的に決める',
   },
 };

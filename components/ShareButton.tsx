@@ -34,7 +34,7 @@ export default function ShareButton({ temple, comment = 'エンジニア運勢' 
     shareUrl.searchParams.append('comment', comment);
 
     // ツイートテキスト
-    const text = `AI初詣メーカー2025で初詣先を決めてもらいました！\nあなたの初詣先は「${temple.name}」⛩️\n\n#AI初詣メーカー2025`;
+    const text = `AI初詣メーカー2026で初詣先を決めてもらいました！\nあなたの初詣先は「${temple.name}」⛩️\n\n#AI初詣メーカー2026`;
 
     // ツイート意図URL
     const tweetUrl = new URL('https://twitter.com/intent/tweet');

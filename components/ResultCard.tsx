@@ -50,7 +50,7 @@ export default function ResultCard({ temple, comment }: ResultCardProps) {
 
         {/* フッター */}
         <p className="text-sm text-white/70 pt-4">
-          AI初詣メーカー2025
+          AI初詣メーカー2026
         </p>
       </div>
     </div>

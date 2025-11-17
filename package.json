@@ -1,7 +1,7 @@
 {
   "name": "ai-hatsumode-maker",
   "version": "1.0.0",
-  "description": "AI初詣メーカー2025 - AIがあなたの初詣先を強制的に決める",
+  "description": "AI初詣メーカー2026 - AIがあなたの初詣先を強制的に決める",
   "private": true,
   "scripts": {
     "dev": "next dev",

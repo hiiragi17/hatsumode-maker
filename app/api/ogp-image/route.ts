@@ -71,7 +71,7 @@ function generateOgpSvg(
         text-anchor="middle"
         font-family="Arial, sans-serif"
       >
-        AI初詣メーカー2025
+        AI初詣メーカー2026
       </text>
 
       <!-- 神社アイコン -->
