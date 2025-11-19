@@ -43,7 +43,7 @@ export default function Home() {
             {/* タイトル */}
             <div className="space-y-4">
               <h1 className="text-5xl md:text-7xl font-bold text-white drop-shadow-2xl">
-                🎍 AI初詣メーカー2025
+                🎍 AI初詣メーカー2026
               </h1>
               <p className="text-xl md:text-2xl text-white/80">
                 AIがあなたの初詣先を強制的に決めます
@@ -78,7 +78,7 @@ export default function Home() {
           // 結果画面
           <div className="w-full max-w-2xl space-y-8 animate-fade-in">
             <ResultCard temple={selectedTemple} comment={selectedComment} />
-            <ShareButton temple={selectedTemple} />
+            <ShareButton temple={selectedTemple} comment={selectedComment} />
 
             {/* もう一度ボタン */}
             <div className="text-center">
