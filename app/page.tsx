@@ -100,69 +100,133 @@ export default function Home() {
             <div className="relative h-96 flex flex-col items-center justify-center overflow-hidden">
               {/* 流れ星 */}
               <div
-                className="absolute text-8xl transition-all duration-1000 ease-out"
+                className="absolute text-8xl transition-all duration-900 ease-out"
                 style={{
-                  left: toriiStage === 0 ? '5%' : '50%',
-                  top: toriiStage === 0 ? '5%' : '35%',
-                  transform: toriiStage >= 3 ? 'scale(2) rotate(20deg)' : 'scale(1)',
+                  left: toriiStage === 0 ? '80%' : toriiStage === 1 ? '65%' : toriiStage === 2 ? '52%' : '50%',
+                  top: toriiStage === 0 ? '5%' : toriiStage === 1 ? '15%' : toriiStage === 2 ? '28%' : '35%',
+                  transform: toriiStage === 0
+                    ? 'scale(1) rotate(-35deg)'
+                    : toriiStage === 1
+                    ? 'scale(1.1) rotate(-30deg)'
+                    : toriiStage === 2
+                    ? 'scale(1.3) rotate(-20deg)'
+                    : toriiStage >= 3
+                    ? 'scale(2.2) rotate(0deg)'
+                    : 'scale(1)',
                   filter: toriiStage >= 3
                     ? 'drop-shadow(0 0 40px rgba(255, 215, 0, 1)) drop-shadow(0 0 60px rgba(255, 255, 255, 0.8))'
+                    : toriiStage >= 1
+                    ? 'drop-shadow(0 0 20px rgba(255, 215, 0, 0.7))'
                     : 'drop-shadow(0 0 10px rgba(255, 215, 0, 0.5))',
                 }}
               >
                 🌠
               </div>
 
-              {/* 流れ星の軌跡（強化版） */}
-              {toriiStage > 0 && toriiStage < 3 && (
+              {/* 流れ星の軌跡（強化版・斜め移動に対応） */}
+              {toriiStage > 0 && (
                 <>
-                  {/* メインの軌跡 */}
-                  <div
-                    className="absolute text-5xl opacity-80 transition-all duration-600 animate-pulse"
-                    style={{
-                      left: `${10 + toriiStage * 10}%`,
-                      top: `${10 + toriiStage * 6}%`,
-                    }}
-                  >
-                    ✨
-                  </div>
-                  <div
-                    className="absolute text-4xl opacity-70 transition-all duration-700"
-                    style={{
-                      left: `${8 + toriiStage * 9}%`,
-                      top: `${8 + toriiStage * 5}%`,
-                    }}
-                  >
-                    💫
-                  </div>
-                  <div
-                    className="absolute text-4xl opacity-60 transition-all duration-800"
-                    style={{
-                      left: `${6 + toriiStage * 8}%`,
-                      top: `${6 + toriiStage * 4}%`,
-                    }}
-                  >
-                    ⭐
-                  </div>
-                  {/* サブの軌跡 */}
-                  <div
-                    className="absolute text-3xl opacity-50 transition-all duration-600"
-                    style={{
-                      left: `${12 + toriiStage * 7}%`,
-                      top: `${12 + toriiStage * 5}%`,
-                    }}
-                  >
-                    ✨
-                  </div>
-                  <div
-                    className="absolute text-2xl opacity-40 transition-all duration-500"
-                    style={{
-                      left: `${7 + toriiStage * 6}%`,
-                      top: `${7 + toriiStage * 3}%`,
-                    }}
-                  >
-                    💫
-                  </div>
+                  {/* Stage 1の軌跡（右上から） */}
+                  {toriiStage >= 1 && (
+                    <>
+                      <div
+                        className="absolute text-5xl transition-all duration-800 animate-pulse"
+                        style={{
+                          left: '75%',
+                          top: '7%',
+                          opacity: toriiStage === 1 ? 0.9 : toriiStage === 2 ? 0.6 : 0.3,
+                        }}
+                      >
+                        ✨
+                      </div>
+                      <div
+                        className="absolute text-4xl transition-all duration-800"
+                        style={{
+                          left: '78%',
+                          top: '6%',
+                          opacity: toriiStage === 1 ? 0.7 : toriiStage === 2 ? 0.4 : 0.2,
+                        }}
+                      >
+                        💫
+                      </div>
+                    </>
+                  )}
+
+                  {/* Stage 2の軌跡 */}
+                  {toriiStage >= 2 && (
+                    <>
+                      <div
+                        className="absolute text-5xl transition-all duration-800 animate-pulse"
+                        style={{
+                          left: '60%',
+                          top: '12%',
+                          opacity: toriiStage === 2 ? 0.9 : 0.5,
+                        }}
+                      >
+                        ⭐
+                      </div>
+                      <div
+                        className="absolute text-4xl transition-all duration-800"
+                        style={{
+                          left: '63%',
+                          top: '10%',
+                          opacity: toriiStage === 2 ? 0.7 : 0.4,
+                        }}
+                      >
+                        ✨
+                      </div>
+                      <div
+                        className="absolute text-3xl transition-all duration-800"
+                        style={{
+                          left: '68%',
+                          top: '9%',
+                          opacity: toriiStage === 2 ? 0.6 : 0.3,
+                        }}
+                      >
+                        💫
+                      </div>
+                    </>
+                  )}
+
+                  {/* Stage 3の軌跡 */}
+                  {toriiStage >= 3 && (
+                    <>
+                      <div
+                        className="absolute text-4xl transition-all duration-800 animate-pulse"
+                        style={{
+                          left: '55%',
+                          top: '22%',
+                          opacity: 0.7,
+                        }}
+                      >
+                        ✨
+                      </div>
+                      <div
+                        className="absolute text-3xl transition-all duration-800"
+                        style={{
+                          left: '58%',
+                          top: '18%',
+                          opacity: 0.5,
+                        }}
+                      >
+                        💫
+                      </div>
+                    </>
+                  )}
+
+                  {/* 長い軌跡のサブエフェクト */}
+                  {toriiStage === 1 && (
+                    <>
+                      <div className="absolute text-3xl opacity-50 animate-pulse" style={{ left: '82%', top: '5%' }}>✨</div>
+                      <div className="absolute text-2xl opacity-40" style={{ left: '85%', top: '4%' }}>💫</div>
+                    </>
+                  )}
+                  {toriiStage === 2 && (
+                    <>
+                      <div className="absolute text-3xl opacity-50 animate-pulse" style={{ left: '70%', top: '8%' }}>⭐</div>
+                      <div className="absolute text-2xl opacity-40" style={{ left: '73%', top: '7%' }}>✨</div>
+                    </>
+                  )}
                 </>
               )}
 
