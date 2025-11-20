@@ -9,17 +9,32 @@ export default function Home() {
   const [selectedTemple, setSelectedTemple] = useState<Temple | null>(null);
   const [selectedComment, setSelectedComment] = useState<string>('');
   const [isRolling, setIsRolling] = useState(false);
+  const [rollingTemple, setRollingTemple] = useState<Temple | null>(null);
 
   const handleChoose = () => {
     setIsRolling(true);
-    // アニメーション効果のために少し遅延
-    setTimeout(() => {
-      const temple = chooseRandomTemple();
-      const comment = chooseRandomComment();
-      setSelectedTemple(temple);
-      setSelectedComment(comment);
-      setIsRolling(false);
-    }, 1000);
+    setRollingTemple(null);
+
+    // ローディング演出：神社名を高速で切り替える
+    let count = 0;
+    const maxRolls = 20; // 20回切り替える
+    const interval = setInterval(() => {
+      setRollingTemple(chooseRandomTemple());
+      count++;
+
+      if (count >= maxRolls) {
+        clearInterval(interval);
+        // 最終的な神社とコメントを決定
+        setTimeout(() => {
+          const temple = chooseRandomTemple();
+          const comment = chooseRandomComment();
+          setSelectedTemple(temple);
+          setSelectedComment(comment);
+          setIsRolling(false);
+          setRollingTemple(null);
+        }, 300);
+      }
+    }, 80); // 80msごとに切り替え
   };
 
   const handleReset = () => {
@@ -37,7 +52,7 @@ export default function Home() {
       </div>
 
       <div className="relative z-10 container mx-auto px-4 py-12 min-h-screen flex flex-col items-center justify-center">
-        {!selectedTemple ? (
+        {!selectedTemple && !isRolling ? (
           // 初期画面
           <div className="text-center space-y-8 animate-fade-in">
             {/* タイトル */}
@@ -58,7 +73,7 @@ export default function Home() {
             {/* 説明文 */}
             <div className="max-w-md mx-auto space-y-4">
               <p className="text-lg text-white/70">
-                2025年の初詣先、決まりましたか？
+                2026年の初詣先、決まりましたか？
               </p>
               <p className="text-lg text-white/70">
                 迷っているあなたに、AIが最適な神社を選びます。
@@ -71,8 +86,38 @@ export default function Home() {
               disabled={isRolling}
               className="mt-8 px-12 py-4 bg-shrine-red hover:bg-shrine-darkRed disabled:bg-gray-500 text-white text-xl font-bold rounded-full shadow-2xl transition-all duration-200 transform hover:scale-110 disabled:scale-100 disabled:cursor-not-allowed"
             >
-              {isRolling ? '選定中...' : 'お任せする ⛩️'}
+              お任せする ⛩️
             </button>
+          </div>
+        ) : isRolling ? (
+          // ローディング画面
+          <div className="text-center space-y-8 animate-fade-in">
+            <div className="space-y-4">
+              <h2 className="text-3xl md:text-4xl font-bold text-white drop-shadow-2xl">
+                AIが選定中...
+              </h2>
+              <div className="text-9xl animate-bounce">⛩️</div>
+            </div>
+
+            {/* ローディング中の神社名表示 */}
+            {rollingTemple && (
+              <div className="min-h-[200px] flex items-center justify-center">
+                <div className="py-8 px-12 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 shadow-2xl">
+                  <p className="text-4xl md:text-5xl font-bold text-shrine-gold animate-pulse">
+                    {rollingTemple.name}
+                  </p>
+                  <p className="text-xl md:text-2xl text-white/80 mt-4">
+                    （{rollingTemple.area}）
+                  </p>
+                </div>
+              </div>
+            )}
+
+            <div className="flex justify-center items-center space-x-2 text-2xl animate-pulse">
+              <span>✨</span>
+              <span>✨</span>
+              <span>✨</span>
+            </div>
           </div>
         ) : (
           // 結果画面
