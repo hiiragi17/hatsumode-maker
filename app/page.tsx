@@ -91,7 +91,7 @@ export default function Home() {
               disabled={isRolling}
               className="mt-8 px-12 py-4 bg-shrine-red hover:bg-shrine-darkRed disabled:bg-gray-500 text-white text-xl font-bold rounded-full shadow-2xl transition-all duration-200 transform hover:scale-110 disabled:scale-100 disabled:cursor-not-allowed"
             >
-              お任せする ⛩️
+              お任せする 🌠
             </button>
           </div>
         ) : isRolling ? (
@@ -370,7 +370,7 @@ export default function Home() {
 
             {/* テキスト */}
             <p className="text-2xl text-white/90 animate-pulse font-bold drop-shadow-lg">
-              {toriiStage < 3 ? '✨ 流れ星が導いています... ✨' : toriiStage < 4 ? '🌟 あなたの初詣先を探しています... 🌟' : '⛩️ 神社が見えてきました... ⛩️'}
+              {toriiStage < 3 ? '✨ 流れ星が導いています...... ✨' : toriiStage < 4 ? '🌟 あなたの初詣先を探しています...... 🌟' : '⛩️ 神社が見えてきました...... ⛩️'}
             </p>
           </div>
         ) : (

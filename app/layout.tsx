@@ -1,6 +1,9 @@
 import type { Metadata } from 'next';
 import './globals.css';
 
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://hatsumode-maker.vercel.app';
+const ogpImageUrl = `${baseUrl}/api/ogp-image`;
+
 export const metadata: Metadata = {
   title: 'AI初詣メーカー2026',
   description: 'AIがあなたの初詣先を強制的に決める - エンジニア向けエンタメWebアプリ',
@@ -10,11 +13,21 @@ export const metadata: Metadata = {
     description: 'AIがあなたの初詣先を強制的に決めます',
     type: 'website',
     locale: 'ja_JP',
+    url: baseUrl,
+    images: [
+      {
+        url: ogpImageUrl,
+        width: 1200,
+        height: 630,
+        alt: 'AI初詣メーカー2026 - AIがあなたの初詣先を決めます',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'AI初詣メーカー2026',
     description: 'AIがあなたの初詣先を強制的に決める',
+    images: [ogpImageUrl],
   },
 };
 

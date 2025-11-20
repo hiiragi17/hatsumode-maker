@@ -14,7 +14,7 @@ export async function generateMetadata(props: SharePageProps): Promise<Metadata>
   const { temple = '神社名', area = '未定', comment = 'エンジニア運勢' } = props.searchParams;
 
   // OGP画像APIのURL
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://hatsumode-maker.vercel.app';
   const ogpImageUrl = new URL(`${baseUrl}/api/ogp-image`);
   ogpImageUrl.searchParams.append('temple', temple);
   ogpImageUrl.searchParams.append('area', area);
