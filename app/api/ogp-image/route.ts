@@ -71,7 +71,7 @@ function generateOgpSvg(
         text-anchor="middle"
         font-family="Arial, sans-serif"
       >
-        AI初詣メーカー2026
+        🎍 AI初詣メーカー2026
       </text>
 
       <!-- 神社アイコン -->
@@ -142,7 +142,7 @@ function generateOgpSvg(
         text-anchor="middle"
         font-family="Arial, sans-serif"
       >
-        ${truncateText(comment, 40)}
+        ${escapeXml(truncateText(comment, 40))}
       </text>
 
       <!-- フッター -->
@@ -154,12 +154,12 @@ function generateOgpSvg(
         text-anchor="middle"
         font-family="Arial, sans-serif"
       >
-        twitter.com/hatsumode-maker
+        hatsumode-maker.vercel.app
       </text>
     </svg>
   `;
 
-  return Buffer.from(svg.trim());
+  return Buffer.from(svg.trim(), 'utf-8');
 }
 
 function escapeXml(unsafe: string): string {

@@ -11,7 +11,9 @@ interface ShareButtonProps {
 export default function ShareButton({ temple, comment = 'エンジニア運勢' }: ShareButtonProps) {
   const handleShare = () => {
     // シェアリングページのURL
-    const baseUrl = typeof window !== 'undefined' ? window.location.origin : 'https://hatsumode-maker.vercel.app';
+    const baseUrl = typeof window !== 'undefined'
+      ? window.location.origin
+      : process.env.NEXT_PUBLIC_BASE_URL || 'https://hatsumode-maker.vercel.app';
     const shareUrl = new URL(`${baseUrl}/share`);
     shareUrl.searchParams.append('temple', temple.name);
     shareUrl.searchParams.append('area', temple.area);
