@@ -95,90 +95,91 @@ export default function Home() {
             </button>
           </div>
         ) : isRolling ? (
-          // おみくじ筒を振るローディング画面
+          // 流れ星/天啓演出のローディング画面
           <div className="text-center space-y-8 animate-fade-in">
             <div className="relative h-96 flex flex-col items-center justify-center overflow-hidden">
-              {/* おみくじ筒 */}
-              <div className="relative z-20 mb-8">
-                <div
-                  className="text-9xl transition-transform duration-300"
-                  style={{
-                    transform: toriiStage > 0
-                      ? `rotate(${Math.sin(toriiStage * 2) * 15}deg)`
-                      : 'rotate(0deg)',
-                  }}
-                >
-                  🎋
-                </div>
+              {/* 流れ星 */}
+              <div
+                className="absolute text-7xl transition-all duration-700 ease-out"
+                style={{
+                  left: toriiStage === 0 ? '10%' : '50%',
+                  top: toriiStage === 0 ? '10%' : '35%',
+                  transform: toriiStage >= 3 ? 'scale(1.5)' : 'scale(1)',
+                  filter: toriiStage >= 3 ? 'drop-shadow(0 0 20px rgba(255, 215, 0, 0.8))' : 'none',
+                }}
+              >
+                🌠
               </div>
 
-              {/* 飛び出すおみくじ棒 */}
-              <div className="relative h-32 flex items-end justify-center">
-                <div
-                  className="text-6xl transition-all duration-500 ease-out"
-                  style={{
-                    transform: `translateY(${Math.max(0, (5 - toriiStage) * 20)}px)`,
-                    opacity: toriiStage > 0 ? 1 : 0,
-                  }}
-                >
-                  📜
-                </div>
-              </div>
-
-              {/* キラキラエフェクト */}
-              {toriiStage >= 4 && (
+              {/* 流れ星の軌跡 */}
+              {toriiStage > 0 && toriiStage < 3 && (
                 <>
+                  <div
+                    className="absolute text-4xl opacity-70 transition-all duration-500"
+                    style={{
+                      left: `${15 + toriiStage * 8}%`,
+                      top: `${15 + toriiStage * 5}%`,
+                    }}
+                  >
+                    ✨
+                  </div>
+                  <div
+                    className="absolute text-3xl opacity-50 transition-all duration-500"
+                    style={{
+                      left: `${12 + toriiStage * 6}%`,
+                      top: `${12 + toriiStage * 4}%`,
+                    }}
+                  >
+                    💫
+                  </div>
+                </>
+              )}
+
+              {/* 光の指し示す方向（Stage 3以降） */}
+              {toriiStage >= 3 && (
+                <>
+                  {/* 中心から放射状に広がる光 */}
                   <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                     <div
-                      className="absolute text-4xl animate-ping"
+                      className="absolute w-2 h-48 bg-gradient-to-b from-shrine-gold via-shrine-gold/50 to-transparent opacity-60 animate-pulse"
                       style={{
-                        animationDuration: '1s',
-                        left: '35%',
-                        top: '30%'
+                        top: '35%',
+                        left: '50%',
+                        transformOrigin: 'top center',
+                        animation: 'pulse 1.5s ease-in-out infinite'
                       }}
-                    >
-                      ✨
-                    </div>
+                    />
                   </div>
-                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                    <div
-                      className="absolute text-4xl animate-ping"
-                      style={{
-                        animationDuration: '1.2s',
-                        animationDelay: '0.2s',
-                        right: '35%',
-                        top: '35%'
-                      }}
-                    >
-                      ✨
-                    </div>
-                  </div>
-                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                    <div
-                      className="absolute text-3xl animate-ping"
-                      style={{
-                        animationDuration: '1s',
-                        animationDelay: '0.3s',
-                        left: '45%',
-                        top: '60%'
-                      }}
-                    >
-                      ⭐
-                    </div>
-                  </div>
-                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                    <div
-                      className="absolute text-3xl animate-ping"
-                      style={{
-                        animationDuration: '1.2s',
-                        animationDelay: '0.1s',
-                        right: '40%',
-                        top: '55%'
-                      }}
-                    >
-                      💫
-                    </div>
-                  </div>
+
+                  {/* 光のパーティクル */}
+                  <div className="absolute text-3xl animate-ping" style={{ left: '48%', top: '50%', animationDuration: '1s' }}>⭐</div>
+                  <div className="absolute text-2xl animate-ping" style={{ left: '52%', top: '55%', animationDuration: '1.2s', animationDelay: '0.1s' }}>✨</div>
+                  <div className="absolute text-3xl animate-ping" style={{ left: '46%', top: '58%', animationDuration: '1.3s', animationDelay: '0.2s' }}>💫</div>
+                </>
+              )}
+
+              {/* 鳥居の出現（Stage 4以降） */}
+              {toriiStage >= 4 && (
+                <div
+                  className="absolute text-9xl transition-all duration-1000 ease-out"
+                  style={{
+                    bottom: '15%',
+                    opacity: toriiStage >= 4 ? 1 : 0,
+                    transform: toriiStage >= 4 ? 'scale(1)' : 'scale(0.3)',
+                    filter: 'drop-shadow(0 0 30px rgba(255, 215, 0, 0.6))',
+                  }}
+                >
+                  ⛩️
+                </div>
+              )}
+
+              {/* 周囲のキラキラエフェクト（最終段階） */}
+              {toriiStage >= 5 && (
+                <>
+                  <div className="absolute text-4xl animate-ping" style={{ left: '25%', top: '70%', animationDuration: '1s' }}>✨</div>
+                  <div className="absolute text-4xl animate-ping" style={{ right: '25%', top: '70%', animationDuration: '1.2s', animationDelay: '0.1s' }}>✨</div>
+                  <div className="absolute text-3xl animate-ping" style={{ left: '35%', top: '25%', animationDuration: '1.1s', animationDelay: '0.2s' }}>⭐</div>
+                  <div className="absolute text-3xl animate-ping" style={{ right: '35%', top: '25%', animationDuration: '1.3s', animationDelay: '0.15s' }}>💫</div>
                 </>
               )}
 
@@ -189,7 +190,7 @@ export default function Home() {
                     key={i}
                     className={`w-3 h-3 rounded-full transition-all duration-300 ${
                       i <= toriiStage
-                        ? 'bg-shrine-gold scale-125'
+                        ? 'bg-shrine-gold scale-125 shadow-lg shadow-shrine-gold/50'
                         : 'bg-white/30'
                     }`}
                   />
@@ -199,7 +200,7 @@ export default function Home() {
 
             {/* テキスト */}
             <p className="text-xl text-white/80 animate-pulse">
-              おみくじを引いています...
+              {toriiStage < 3 ? '流れ星が導いています...' : toriiStage < 4 ? 'あなたの初詣先を探しています...' : '神社が見えてきました...'}
             </p>
           </div>
         ) : (
