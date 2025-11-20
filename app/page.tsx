@@ -37,9 +37,9 @@ export default function Home() {
           setIsRolling(false);
           setRollingTemple(null);
           setToriiStage(0);
-        }, 800);
+        }, 600);
       }
-    }, 900); // 900msごとに次のステージへ（よりゆっくり）
+    }, 700); // 700msごとに次のステージへ
   };
 
   const handleReset = () => {
@@ -100,7 +100,7 @@ export default function Home() {
             <div className="relative h-96 flex flex-col items-center justify-center overflow-hidden">
               {/* 流れ星 */}
               <div
-                className="absolute text-8xl transition-all duration-900 ease-out"
+                className="absolute text-8xl transition-all duration-700 ease-out"
                 style={{
                   left: toriiStage === 0 ? '80%' : toriiStage === 1 ? '65%' : toriiStage === 2 ? '52%' : '50%',
                   top: toriiStage === 0 ? '5%' : toriiStage === 1 ? '15%' : toriiStage === 2 ? '28%' : '35%',
