@@ -95,56 +95,112 @@ export default function Home() {
             </button>
           </div>
         ) : isRolling ? (
-          // お賽銭と鈴のローディング画面
+          // おみくじ筒を振るローディング画面
           <div className="text-center space-y-8 animate-fade-in">
-            <div className="relative h-96 flex items-center justify-center overflow-hidden">
-              {/* 中央の鈴 */}
-              <div className="relative z-20">
+            <div className="relative h-96 flex flex-col items-center justify-center overflow-hidden">
+              {/* おみくじ筒 */}
+              <div className="relative z-20 mb-8">
                 <div
                   className="text-9xl transition-transform duration-300"
                   style={{
-                    animation: toriiStage > 0 ? 'bellShake 0.5s ease-in-out' : 'none'
+                    transform: toriiStage > 0
+                      ? `rotate(${Math.sin(toriiStage * 2) * 15}deg)`
+                      : 'rotate(0deg)',
                   }}
                 >
-                  🔔
+                  🎋
                 </div>
               </div>
 
-              {/* 落下する5円玉 */}
-              <div
-                className="absolute top-0 text-6xl transition-all duration-700 ease-in"
-                style={{
-                  transform: toriiStage > 0 ? 'translateY(180px)' : 'translateY(0px)',
-                  opacity: toriiStage > 0 ? 0 : 1,
-                }}
-              >
-                💴
+              {/* 飛び出すおみくじ棒 */}
+              <div className="relative h-32 flex items-end justify-center">
+                <div
+                  className="text-6xl transition-all duration-500 ease-out"
+                  style={{
+                    transform: `translateY(${Math.max(0, (5 - toriiStage) * 20)}px)`,
+                    opacity: toriiStage > 0 ? 1 : 0,
+                  }}
+                >
+                  📜
+                </div>
               </div>
 
-              {/* 音波エフェクト（同心円） */}
-              {toriiStage > 0 && (
+              {/* キラキラエフェクト */}
+              {toriiStage >= 4 && (
                 <>
-                  <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                     <div
-                      className="absolute w-32 h-32 rounded-full border-4 border-shrine-gold/60 animate-ping"
-                      style={{ animationDuration: '1s' }}
-                    />
+                      className="absolute text-4xl animate-ping"
+                      style={{
+                        animationDuration: '1s',
+                        left: '35%',
+                        top: '30%'
+                      }}
+                    >
+                      ✨
+                    </div>
                   </div>
-                  <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                     <div
-                      className="absolute w-48 h-48 rounded-full border-4 border-shrine-gold/40 animate-ping"
-                      style={{ animationDuration: '1.2s', animationDelay: '0.1s' }}
-                    />
+                      className="absolute text-4xl animate-ping"
+                      style={{
+                        animationDuration: '1.2s',
+                        animationDelay: '0.2s',
+                        right: '35%',
+                        top: '35%'
+                      }}
+                    >
+                      ✨
+                    </div>
                   </div>
-                  <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                     <div
-                      className="absolute w-64 h-64 rounded-full border-4 border-shrine-gold/20 animate-ping"
-                      style={{ animationDuration: '1.4s', animationDelay: '0.2s' }}
-                    />
+                      className="absolute text-3xl animate-ping"
+                      style={{
+                        animationDuration: '1s',
+                        animationDelay: '0.3s',
+                        left: '45%',
+                        top: '60%'
+                      }}
+                    >
+                      ⭐
+                    </div>
+                  </div>
+                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                    <div
+                      className="absolute text-3xl animate-ping"
+                      style={{
+                        animationDuration: '1.2s',
+                        animationDelay: '0.1s',
+                        right: '40%',
+                        top: '55%'
+                      }}
+                    >
+                      💫
+                    </div>
                   </div>
                 </>
               )}
+
+              {/* プログレス表示 */}
+              <div className="absolute bottom-8 flex space-x-2">
+                {[1, 2, 3, 4, 5].map((i) => (
+                  <div
+                    key={i}
+                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                      i <= toriiStage
+                        ? 'bg-shrine-gold scale-125'
+                        : 'bg-white/30'
+                    }`}
+                  />
+                ))}
+              </div>
             </div>
+
+            {/* テキスト */}
+            <p className="text-xl text-white/80 animate-pulse">
+              おみくじを引いています...
+            </p>
           </div>
         ) : (
           // 結果画面
