@@ -9,6 +9,14 @@ export async function GET(request: Request) {
     const commentParam = searchParams.get('comment');
     const areaParam = searchParams.get('area');
 
+    // デバッグログ
+    console.log('OGP Image Request:', {
+      temple: templeNameParam,
+      comment: commentParam,
+      area: areaParam,
+      url: request.url
+    });
+
     // パラメータがない場合はデフォルト（メインページ用）のOGP画像を生成
     const isDefaultImage = !templeNameParam && !commentParam && !areaParam;
 
@@ -20,20 +28,30 @@ export async function GET(request: Request) {
       const templeName = templeNameParam || '神社名';
       const comment = commentParam || 'エンジニア運勢';
       const area = areaParam || '未定';
+
+      console.log('Generating OGP with:', { templeName, comment, area });
       svg = generateOgpSvg(templeName, comment, area);
     }
 
     // SVGをPNGに変換
     const buffer = await sharp(svg).png().toBuffer();
 
-    return new Response(new Uint8Array(buffer), {
+    console.log('OGP Image generated successfully, size:', buffer.length);
+
+    return new Response(buffer, {
       headers: {
         'Content-Type': 'image/png',
-        'Cache-Control': 'public, max-age=3600',
+        'Cache-Control': 'public, max-age=86400, s-maxage=86400, stale-while-revalidate=86400',
+        'CDN-Cache-Control': 'public, max-age=86400',
+        'Vercel-CDN-Cache-Control': 'public, max-age=86400',
       },
     });
   } catch (error) {
     console.error('OGP image generation failed:', error);
+    console.error('Error details:', {
+      message: error instanceof Error ? error.message : 'Unknown error',
+      stack: error instanceof Error ? error.stack : undefined
+    });
     return new Response('Failed to generate image', { status: 500 });
   }
 }
