@@ -38,7 +38,7 @@ export async function GET(request: Request) {
 
     console.log('OGP Image generated successfully, size:', buffer.length);
 
-    return new Response(buffer, {
+    return new Response(new Uint8Array(buffer), {
       headers: {
         'Content-Type': 'image/png',
         'Cache-Control': 'public, max-age=86400, s-maxage=86400, stale-while-revalidate=86400',
