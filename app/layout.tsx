@@ -27,7 +27,10 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'AI初詣メーカー2026',
     description: 'AIがあなたの初詣先を強制的に決める',
-    images: [ogpImageUrl],
+    images: {
+      url: ogpImageUrl,
+      alt: 'AI初詣メーカー2026 - AIがあなたの初詣先を決めます',
+    },
   },
 };
 
