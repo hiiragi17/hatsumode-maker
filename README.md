@@ -1,4 +1,4 @@
-# 🎍 AI初詣メーカー2025（AI Hatsumode Maker 2025）
+# 🎍 AI初詣メーカー2026（AI Hatsumode Maker 2026）
 
 AIがあなたの初詣先を強制的に決める、エンジニア向けエンタメWebアプリ
 
@@ -8,6 +8,8 @@ AIがあなたの初詣先を強制的に決める、エンジニア向けエン
 - **エンジニア運勢**: 20種類のエンジニア専用コメント（Pull Request運、バグ運など）
 - **結果の画像化**: HTML→PNG変換で結果をダウンロード可能
 - **SNSシェア**: X（Twitter）へ簡単に投稿
+- **動的OGP画像生成**: @vercel/ogを使用したSNSカード画像の自動生成
+- **自前短縮URL**: Base64エンコード方式の独自短縮URLシステム
 - **和風デザイン**: 夜空と星をモチーフにしたダークテーマ
 - **レスポンシブ**: スマホ・タブレット・PC対応
 
@@ -17,23 +19,37 @@ AIがあなたの初詣先を強制的に決める、エンジニア向けエン
 - **言語**: TypeScript
 - **スタイル**: Tailwind CSS
 - **画像生成**: html-to-image
+- **OGP画像生成**: @vercel/og (Edge Runtime)
+- **短縮URL**: 独自実装（Base64エンコード）
+- **テスト**: Vitest
 - **デプロイ**: Vercel
 
 ## 📁 プロジェクト構成
 
 ```
-ai-hatsumode-maker/
+hatsumode-maker/
 ├── app/
-│   ├── page.tsx          # メインページ
-│   ├── layout.tsx        # レイアウト
-│   └── globals.css       # グローバルスタイル
+│   ├── page.tsx                    # メインページ
+│   ├── layout.tsx                  # レイアウト
+│   ├── globals.css                 # グローバルスタイル
+│   ├── share/
+│   │   └── page.tsx                # シェア専用ページ（動的OGP）
+│   ├── s/[id]/
+│   │   └── page.tsx                # 短縮URLリダイレクト
+│   └── api/
+│       ├── ogp-image/
+│       │   └── route.tsx           # OGP画像生成API（@vercel/og）
+│       └── shorten/
+│           └── route.ts            # URL短縮API
 ├── components/
-│   ├── ResultCard.tsx    # 結果表示カード
-│   └── ShareButton.tsx   # シェア・ダウンロードボタン
+│   ├── ResultCard.tsx              # 結果表示カード
+│   ├── ShareButton.tsx             # シェア・ダウンロードボタン
+│   └── SharePageClient.tsx         # シェアページクライアント
 ├── lib/
-│   ├── temples.ts        # 神社データ
-│   └── generateImage.ts  # 画像生成ユーティリティ
-└── public/               # 静的アセット
+│   ├── temples.ts                  # 神社データ（24社）
+│   └── shortUrl.ts                 # 短縮URLエンコード/デコード
+├── __tests__/                       # テストファイル
+└── public/                          # 静的アセット
 ```
 
 ## 🛠️ セットアップ
@@ -155,14 +171,41 @@ vercel login
 vercel deploy
 ```
 
+## 🔧 主要機能の詳細
+
+### 動的OGP画像生成
+
+@vercel/ogを使用して、シェア時のTwitterカード画像を動的に生成します。
+
+- **Edge Runtime**: 高速なレスポンス
+- **カスタマイズ可能**: 神社名、地域、運勢を含む
+- **エンドポイント**: `/api/ogp-image?t={神社名}&a={地域}&c={コメント}`
+
+### 自前短縮URLシステム
+
+外部APIに依存しない独自の短縮URLシステムを実装。
+
+- **Base64エンコード**: パラメータをコンパクトに変換
+- **サーバーサイド処理**: データベース不要
+- **リダイレクト**: `/s/[id]` から `/share` へ自動転送
+- **Twitterカード対応**: 短縮URLでも正しくOGP画像を表示
+
+```typescript
+// 短縮URL生成例
+const params = { t: "明治神宮", a: "東京", c: "Pull Request運が最強です" };
+const shortUrl = generateShortUrl(params, baseUrl);
+// => https://hatsumode-maker.vercel.app/s/eyJ0Ijoi...
+```
+
 ## 🎯 今後の拡張案
 
 - [ ] おみくじ機能の追加（大吉・吉・凶など）
 - [x] エンジニア向けメッセージ（「今日のPull Request運」など）✅ 実装済み
+- [x] OGP画像の自動生成 ✅ 実装済み（@vercel/og使用）
+- [x] 短縮URLシステム ✅ 実装済み（独自実装）
 - [ ] ジオロケーション対応（近くの神社を優先表示）
 - [ ] 参拝履歴の保存（LocalStorage）
-- [ ] OGP画像の自動生成
-- [ ] シェア時の投稿文にエンジニア運勢も含める
+- [ ] ダークモード/ライトモードの切り替え
 
 ## 📄 ライセンス
 
