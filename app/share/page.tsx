@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import { temples } from '@/lib/temples';
+import SharePageClient from '@/components/SharePageClient';
 
 interface SharePageProps {
   searchParams: {
@@ -81,17 +82,7 @@ export default function SharePage({ searchParams }: SharePageProps) {
           <span>🎍</span>
         </div>
 
-        <div className="space-y-4">
-          <p className="text-lg text-white/70">
-            このページをツイートしてシェアできます
-          </p>
-          <a
-            href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(`AI初詣メーカー2026で初詣先を決めてもらいました！\\n${temple}（${area}）⛩️\\n\\n#AI初詣メーカー2026`)}&url=${encodeURIComponent(typeof window !== 'undefined' ? window.location.href : '')}`}
-            className="inline-block px-8 py-3 bg-blue-500 hover:bg-blue-600 text-white font-bold rounded-lg shadow-lg transition-all duration-200 transform hover:scale-105"
-          >
-            𝕏 でシェア
-          </a>
-        </div>
+        <SharePageClient temple={temple} area={area} comment={comment} />
 
         <a
           href="/"
