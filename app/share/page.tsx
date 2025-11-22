@@ -41,7 +41,6 @@ export async function generateMetadata(props: SharePageProps): Promise<Metadata>
           alt: `${temple}の初詣結果`,
         },
       ],
-      url: `${baseUrl}/share?t=${encodeURIComponent(temple)}&a=${encodeURIComponent(area)}&c=${encodeURIComponent(comment)}`,
     },
     twitter: {
       card: 'summary_large_image',
