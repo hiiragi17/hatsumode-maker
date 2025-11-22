@@ -1,0 +1,283 @@
+import { ImageResponse } from '@vercel/og';
+
+export const runtime = 'edge';
+
+export async function GET(request: Request) {
+  try {
+    const { searchParams } = new URL(request.url);
+    const templeNameParam = searchParams.get('t');
+    const commentParam = searchParams.get('c');
+    const areaParam = searchParams.get('a');
+
+    // パラメータがない場合はデフォルト（メインページ用）のOGP画像を生成
+    const isDefaultImage = !templeNameParam && !commentParam && !areaParam;
+
+    if (isDefaultImage) {
+      return new ImageResponse(
+        (
+          <div
+            style={{
+              width: '100%',
+              height: '100%',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              background: 'linear-gradient(135deg, #1a1a2e 0%, #4a148c 50%, #1a1a2e 100%)',
+              position: 'relative',
+            }}
+          >
+            {/* 装飾的な星 */}
+            <div style={{ position: 'absolute', top: '80px', left: '100px', width: '16px', height: '16px', borderRadius: '50%', background: '#ffd700', opacity: 0.8 }} />
+            <div style={{ position: 'absolute', top: '100px', left: '1100px', width: '12px', height: '12px', borderRadius: '50%', background: '#ffd700', opacity: 0.6 }} />
+            <div style={{ position: 'absolute', top: '550px', left: '1050px', width: '14px', height: '14px', borderRadius: '50%', background: '#ffd700', opacity: 0.7 }} />
+            <div style={{ position: 'absolute', top: '550px', left: '150px', width: '10px', height: '10px', borderRadius: '50%', background: '#ffd700', opacity: 0.5 }} />
+            <div style={{ position: 'absolute', top: '150px', left: '300px', width: '12px', height: '12px', borderRadius: '50%', background: '#ffd700', opacity: 0.7 }} />
+            <div style={{ position: 'absolute', top: '500px', left: '900px', width: '10px', height: '10px', borderRadius: '50%', background: '#ffd700', opacity: 0.6 }} />
+            <div style={{ position: 'absolute', top: '300px', left: '200px', width: '14px', height: '14px', borderRadius: '50%', background: '#ffd700', opacity: 0.5 }} />
+            <div style={{ position: 'absolute', top: '250px', left: '1000px', width: '12px', height: '12px', borderRadius: '50%', background: '#ffd700', opacity: 0.8 }} />
+
+            {/* タイトル */}
+            <div
+              style={{
+                position: 'absolute',
+                top: '100px',
+                fontSize: '64px',
+                fontWeight: 'bold',
+                color: 'white',
+                fontFamily: 'Noto Sans JP',
+              }}
+            >
+              AI初詣メーカー2026
+            </div>
+
+            {/* 鳥居 */}
+            <div style={{ position: 'absolute', top: '190px', left: '450px', display: 'flex', flexDirection: 'column' }}>
+              {/* 上の横木（笠木） */}
+              <div style={{ width: '300px', height: '20px', background: '#dc143c', opacity: 0.9, borderRadius: '3px' }} />
+              {/* 柱と下の横木 */}
+              <div style={{ display: 'flex', position: 'relative', height: '120px' }}>
+                <div style={{ position: 'absolute', left: '30px', width: '15px', height: '120px', background: '#dc143c', opacity: 0.9 }} />
+                <div style={{ position: 'absolute', left: '255px', width: '15px', height: '120px', background: '#dc143c', opacity: 0.9 }} />
+                <div style={{ position: 'absolute', top: '50px', left: '20px', width: '260px', height: '12px', background: '#dc143c', opacity: 0.9, borderRadius: '2px' }} />
+              </div>
+            </div>
+
+            {/* キャッチコピー */}
+            <div
+              style={{
+                position: 'absolute',
+                top: '360px',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+              }}
+            >
+              <div
+                style={{
+                  fontSize: '52px',
+                  fontWeight: 'bold',
+                  color: '#d4af37',
+                  fontFamily: 'Noto Sans JP',
+                  marginBottom: '20px',
+                }}
+              >
+                AIがあなたの初詣先を
+              </div>
+              <div
+                style={{
+                  fontSize: '52px',
+                  fontWeight: 'bold',
+                  color: '#d4af37',
+                  fontFamily: 'Noto Sans JP',
+                }}
+              >
+                強制的に決めます
+              </div>
+            </div>
+
+            {/* サブテキスト */}
+            <div
+              style={{
+                position: 'absolute',
+                top: '505px',
+                fontSize: '28px',
+                color: 'rgba(255, 255, 255, 0.8)',
+                fontFamily: 'Noto Sans JP',
+              }}
+            >
+              迷っているあなたに、運命の神社を選びます
+            </div>
+
+            {/* フッター */}
+            <div
+              style={{
+                position: 'absolute',
+                bottom: '20px',
+                fontSize: '20px',
+                color: 'rgba(255, 255, 255, 0.5)',
+                fontFamily: 'Noto Sans JP',
+              }}
+            >
+              hatsumode-maker.vercel.app
+            </div>
+          </div>
+        ),
+        {
+          width: 1200,
+          height: 630,
+        }
+      );
+    }
+
+    // デフォルト値の設定
+    const templeName = templeNameParam || '神社名';
+    const comment = commentParam || 'エンジニア運勢';
+    const area = areaParam || '未定';
+
+    const truncatedComment = comment.length > 40 ? comment.substring(0, 37) + '...' : comment;
+    const commentFontSize = comment.length > 30 ? 28 : 36;
+
+    return new ImageResponse(
+      (
+        <div
+          style={{
+            width: '100%',
+            height: '100%',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            background: 'linear-gradient(135deg, #1a1a2e 0%, #4a148c 50%, #1a1a2e 100%)',
+            position: 'relative',
+          }}
+        >
+          {/* 装飾的な星 */}
+          <div style={{ position: 'absolute', top: '80px', left: '100px', width: '16px', height: '16px', borderRadius: '50%', background: '#ffd700', opacity: 0.8 }} />
+          <div style={{ position: 'absolute', top: '100px', left: '1100px', width: '12px', height: '12px', borderRadius: '50%', background: '#ffd700', opacity: 0.6 }} />
+          <div style={{ position: 'absolute', top: '550px', left: '1050px', width: '14px', height: '14px', borderRadius: '50%', background: '#ffd700', opacity: 0.7 }} />
+          <div style={{ position: 'absolute', top: '550px', left: '150px', width: '10px', height: '10px', borderRadius: '50%', background: '#ffd700', opacity: 0.5 }} />
+
+          {/* タイトル */}
+          <div
+            style={{
+              position: 'absolute',
+              top: '50px',
+              fontSize: '48px',
+              fontWeight: 'bold',
+              color: 'white',
+              fontFamily: 'Noto Sans JP',
+            }}
+          >
+            AI初詣メーカー2026
+          </div>
+
+          {/* 鳥居 */}
+          <div style={{ position: 'absolute', top: '112px', left: '510px', display: 'flex', flexDirection: 'column' }}>
+            {/* 上の横木（笠木） */}
+            <div style={{ width: '180px', height: '16px', background: '#dc143c', opacity: 0.9, borderRadius: '2px' }} />
+            {/* 柱と下の横木 */}
+            <div style={{ display: 'flex', position: 'relative', height: '90px' }}>
+              <div style={{ position: 'absolute', left: '20px', width: '12px', height: '90px', background: '#dc143c', opacity: 0.9 }} />
+              <div style={{ position: 'absolute', left: '148px', width: '12px', height: '90px', background: '#dc143c', opacity: 0.9 }} />
+              <div style={{ position: 'absolute', top: '38px', left: '15px', width: '150px', height: '10px', background: '#dc143c', opacity: 0.9, borderRadius: '2px' }} />
+            </div>
+          </div>
+
+          {/* 神社名 */}
+          <div
+            style={{
+              position: 'absolute',
+              top: '240px',
+              fontSize: '72px',
+              fontWeight: 'bold',
+              color: 'white',
+              fontFamily: 'Noto Sans JP',
+            }}
+          >
+            {templeName}
+          </div>
+
+          {/* 地域 */}
+          <div
+            style={{
+              position: 'absolute',
+              top: '320px',
+              fontSize: '40px',
+              color: '#d4af37',
+              fontFamily: 'Noto Sans JP',
+            }}
+          >
+            （{area}）
+          </div>
+
+          {/* コメントボックス */}
+          <div
+            style={{
+              position: 'absolute',
+              top: '390px',
+              left: '100px',
+              width: '1000px',
+              height: '180px',
+              border: '2px solid #d4af37',
+              borderRadius: '10px',
+              background: 'rgba(255, 255, 255, 0.1)',
+              display: 'flex',
+              flexDirection: 'column',
+              padding: '30px',
+            }}
+          >
+            {/* エンジニア運勢ラベル */}
+            <div
+              style={{
+                fontSize: '26px',
+                fontWeight: 'bold',
+                color: '#d4af37',
+                fontFamily: 'Noto Sans JP',
+                marginBottom: '30px',
+              }}
+            >
+              エンジニア運勢
+            </div>
+
+            {/* コメント */}
+            <div
+              style={{
+                fontSize: commentFontSize,
+                color: 'white',
+                fontFamily: 'Noto Sans JP',
+                textAlign: 'center',
+              }}
+            >
+              {truncatedComment}
+            </div>
+          </div>
+
+          {/* フッター */}
+          <div
+            style={{
+              position: 'absolute',
+              bottom: '20px',
+              fontSize: '20px',
+              color: 'rgba(255, 255, 255, 0.5)',
+              fontFamily: 'Noto Sans JP',
+            }}
+          >
+            hatsumode-maker.vercel.app
+          </div>
+        </div>
+      ),
+      {
+        width: 1200,
+        height: 630,
+      }
+    );
+  } catch (error) {
+    console.error('OGP image generation failed:', error);
+    console.error('Error details:', {
+      message: error instanceof Error ? error.message : 'Unknown error',
+      stack: error instanceof Error ? error.stack : undefined,
+    });
+    return new Response('Failed to generate image', { status: 500 });
+  }
+}

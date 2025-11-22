@@ -3,15 +3,15 @@ import { temples } from '@/lib/temples';
 
 interface SharePageProps {
   searchParams: {
-    temple?: string;
-    area?: string;
-    comment?: string;
+    t?: string;  // temple (短縮)
+    a?: string;  // area (短縮)
+    c?: string;  // comment (短縮)
   };
 }
 
 // ダイナミックメタデータの生成
 export async function generateMetadata(props: SharePageProps): Promise<Metadata> {
-  const { temple = '神社名', area = '未定', comment = 'エンジニア運勢' } = props.searchParams;
+  const { t: temple = '神社名', a: area = '未定', c: comment = 'エンジニア運勢' } = props.searchParams;
 
   // デバッグログ
   console.log('generateMetadata called with:', { temple, area, comment });
@@ -19,9 +19,9 @@ export async function generateMetadata(props: SharePageProps): Promise<Metadata>
   // OGP画像APIのURL
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://hatsumode-maker.vercel.app';
   const ogpImageUrl = new URL(`${baseUrl}/api/ogp-image`);
-  ogpImageUrl.searchParams.append('temple', temple);
-  ogpImageUrl.searchParams.append('area', area);
-  ogpImageUrl.searchParams.append('comment', comment);
+  ogpImageUrl.searchParams.append('t', temple);
+  ogpImageUrl.searchParams.append('a', area);
+  ogpImageUrl.searchParams.append('c', comment);
 
   console.log('Generated OGP image URL:', ogpImageUrl.toString());
 
@@ -40,7 +40,7 @@ export async function generateMetadata(props: SharePageProps): Promise<Metadata>
           alt: `${temple}の初詣結果`,
         },
       ],
-      url: `${baseUrl}/share?temple=${encodeURIComponent(temple)}&area=${encodeURIComponent(area)}&comment=${encodeURIComponent(comment)}`,
+      url: `${baseUrl}/share?t=${encodeURIComponent(temple)}&a=${encodeURIComponent(area)}&c=${encodeURIComponent(comment)}`,
     },
     twitter: {
       card: 'summary_large_image',
@@ -55,7 +55,7 @@ export async function generateMetadata(props: SharePageProps): Promise<Metadata>
 }
 
 export default function SharePage({ searchParams }: SharePageProps) {
-  const { temple = '神社名', area = '未定', comment = 'エンジニア運勢' } = searchParams;
+  const { t: temple = '神社名', a: area = '未定', c: comment = 'エンジニア運勢' } = searchParams;
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-gray-900 via-purple-900 to-gray-900 flex items-center justify-center p-4">
