@@ -5,9 +5,9 @@ export const dynamic = 'force-dynamic';
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
-    const templeNameParam = searchParams.get('temple');
-    const commentParam = searchParams.get('comment');
-    const areaParam = searchParams.get('area');
+    const templeNameParam = searchParams.get('t');
+    const commentParam = searchParams.get('c');
+    const areaParam = searchParams.get('a');
 
     // デバッグログ
     console.log('OGP Image Request:', {
@@ -93,7 +93,7 @@ function generateOgpSvg(
         font-weight="bold"
         fill="white"
         text-anchor="middle"
-        font-family="Arial, sans-serif"
+        font-family="Noto Sans JP, Noto Sans CJK JP, Hiragino Sans, Hiragino Kaku Gothic ProN, Meiryo, sans-serif"
       >
         AI初詣メーカー2026
       </text>
@@ -116,7 +116,7 @@ function generateOgpSvg(
         font-weight="bold"
         fill="white"
         text-anchor="middle"
-        font-family="Arial, sans-serif"
+        font-family="Noto Sans JP, Noto Sans CJK JP, Hiragino Sans, Hiragino Kaku Gothic ProN, Meiryo, sans-serif"
       >
         ${escapeXml(templeName)}
       </text>
@@ -128,7 +128,7 @@ function generateOgpSvg(
         font-size="40"
         fill="#d4af37"
         text-anchor="middle"
-        font-family="Arial, sans-serif"
+        font-family="Noto Sans JP, Noto Sans CJK JP, Hiragino Sans, Hiragino Kaku Gothic ProN, Meiryo, sans-serif"
       >
         （${escapeXml(area)}）
       </text>
@@ -152,7 +152,7 @@ function generateOgpSvg(
         font-size="26"
         font-weight="bold"
         fill="#d4af37"
-        font-family="Arial, sans-serif"
+        font-family="Noto Sans JP, Noto Sans CJK JP, Hiragino Sans, Hiragino Kaku Gothic ProN, Meiryo, sans-serif"
       >
         エンジニア運勢
       </text>
@@ -164,7 +164,7 @@ function generateOgpSvg(
         font-size="${getTextLength(comment) > 30 ? 28 : 36}"
         fill="white"
         text-anchor="middle"
-        font-family="Arial, sans-serif"
+        font-family="Noto Sans JP, Noto Sans CJK JP, Hiragino Sans, Hiragino Kaku Gothic ProN, Meiryo, sans-serif"
       >
         ${escapeXml(truncateText(comment, 40))}
       </text>
@@ -176,7 +176,7 @@ function generateOgpSvg(
         font-size="20"
         fill="rgba(255, 255, 255, 0.5)"
         text-anchor="middle"
-        font-family="Arial, sans-serif"
+        font-family="Noto Sans JP, Noto Sans CJK JP, Hiragino Sans, Hiragino Kaku Gothic ProN, Meiryo, sans-serif"
       >
         hatsumode-maker.vercel.app
       </text>
@@ -233,7 +233,7 @@ function generateDefaultOgpSvg(): Buffer {
         font-weight="bold"
         fill="white"
         text-anchor="middle"
-        font-family="Arial, sans-serif"
+        font-family="Noto Sans JP, Noto Sans CJK JP, Hiragino Sans, Hiragino Kaku Gothic ProN, Meiryo, sans-serif"
       >
         AI初詣メーカー2026
       </text>
@@ -246,7 +246,7 @@ function generateDefaultOgpSvg(): Buffer {
         font-weight="bold"
         fill="#d4af37"
         text-anchor="middle"
-        font-family="Arial, sans-serif"
+        font-family="Noto Sans JP, Noto Sans CJK JP, Hiragino Sans, Hiragino Kaku Gothic ProN, Meiryo, sans-serif"
       >
         AIがあなたの初詣先を
       </text>
@@ -257,7 +257,7 @@ function generateDefaultOgpSvg(): Buffer {
         font-weight="bold"
         fill="#d4af37"
         text-anchor="middle"
-        font-family="Arial, sans-serif"
+        font-family="Noto Sans JP, Noto Sans CJK JP, Hiragino Sans, Hiragino Kaku Gothic ProN, Meiryo, sans-serif"
       >
         強制的に決めます
       </text>
@@ -269,7 +269,7 @@ function generateDefaultOgpSvg(): Buffer {
         font-size="28"
         fill="rgba(255, 255, 255, 0.8)"
         text-anchor="middle"
-        font-family="Arial, sans-serif"
+        font-family="Noto Sans JP, Noto Sans CJK JP, Hiragino Sans, Hiragino Kaku Gothic ProN, Meiryo, sans-serif"
       >
         迷っているあなたに、運命の神社を選びます
       </text>
@@ -281,7 +281,7 @@ function generateDefaultOgpSvg(): Buffer {
         font-size="20"
         fill="rgba(255, 255, 255, 0.5)"
         text-anchor="middle"
-        font-family="Arial, sans-serif"
+        font-family="Noto Sans JP, Noto Sans CJK JP, Hiragino Sans, Hiragino Kaku Gothic ProN, Meiryo, sans-serif"
       >
         hatsumode-maker.vercel.app
       </text>

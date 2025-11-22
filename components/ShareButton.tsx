@@ -15,9 +15,9 @@ export default function ShareButton({ temple, comment = 'エンジニア運勢' 
       ? window.location.origin
       : process.env.NEXT_PUBLIC_BASE_URL || 'https://hatsumode-maker.vercel.app';
     const shareUrl = new URL(`${baseUrl}/share`);
-    shareUrl.searchParams.append('temple', temple.name);
-    shareUrl.searchParams.append('area', temple.area);
-    shareUrl.searchParams.append('comment', comment);
+    shareUrl.searchParams.append('t', temple.name);
+    shareUrl.searchParams.append('a', temple.area);
+    shareUrl.searchParams.append('c', comment);
 
     // ツイートテキスト
     const text = `AI初詣メーカー2026で初詣先を決めてもらいました！\nあなたの初詣先は「${temple.name}」⛩️\n\n#AI初詣メーカー2026`;
