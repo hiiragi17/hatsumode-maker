@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { generateShortUrl, type ShareParams } from '@/lib/shortUrl';
 
 export async function POST(req: NextRequest) {
   try {
@@ -8,17 +9,28 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'URL is required' }, { status: 400 });
     }
 
-    // is.gd API を使用してURL短縮
-    const shortenUrl = `https://is.gd/create.php?format=simple&url=${encodeURIComponent(url)}`;
-    const response = await fetch(shortenUrl);
+    // URLからパラメータを抽出
+    const urlObj = new URL(url);
+    const temple = urlObj.searchParams.get('t');
+    const area = urlObj.searchParams.get('a');
+    const comment = urlObj.searchParams.get('c');
 
-    if (!response.ok) {
-      throw new Error('Failed to shorten URL');
+    // パラメータが存在しない場合は元のURLを返す
+    if (!temple || !area || !comment) {
+      return NextResponse.json({ shortUrl: url });
     }
 
-    const shortUrl = await response.text();
+    // 短縮URLを生成
+    const params: ShareParams = {
+      t: temple,
+      a: area,
+      c: comment,
+    };
 
-    return NextResponse.json({ shortUrl: shortUrl.trim() });
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://hatsumode-maker.vercel.app';
+    const shortUrl = generateShortUrl(params, baseUrl);
+
+    return NextResponse.json({ shortUrl });
   } catch (error) {
     console.error('Error shortening URL:', error);
     // エラーの場合は元のURLを返す
