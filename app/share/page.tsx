@@ -14,17 +14,12 @@ interface SharePageProps {
 export async function generateMetadata(props: SharePageProps): Promise<Metadata> {
   const { t: temple = '神社名', a: area = '未定', c: comment = 'エンジニア運勢' } = props.searchParams;
 
-  // デバッグログ
-  console.log('generateMetadata called with:', { temple, area, comment });
-
   // OGP画像APIのURL
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://hatsumode-maker.vercel.app';
   const ogpImageUrl = new URL(`${baseUrl}/api/ogp-image`);
   ogpImageUrl.searchParams.append('t', temple);
   ogpImageUrl.searchParams.append('a', area);
   ogpImageUrl.searchParams.append('c', comment);
-
-  console.log('Generated OGP image URL:', ogpImageUrl.toString());
 
   return {
     title: `${temple} | AI初詣メーカー2026`,
