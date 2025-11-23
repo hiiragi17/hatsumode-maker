@@ -34,7 +34,6 @@ export function decodeFromShortId(shortId: string): ShareParams | null {
     const json = Buffer.from(base64, 'base64').toString('utf-8');
     return JSON.parse(json) as ShareParams;
   } catch (error) {
-    console.error('Failed to decode short ID:', error);
     return null;
   }
 }

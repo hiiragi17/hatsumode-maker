@@ -32,7 +32,6 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ shortUrl });
   } catch (error) {
-    console.error('Error shortening URL:', error);
     // エラーの場合は元のURLを返す
     const { url } = await req.json().catch(() => ({ url: '' }));
     return NextResponse.json({ shortUrl: url }, { status: 500 });
