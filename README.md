@@ -197,16 +197,6 @@ const shortUrl = generateShortUrl(params, baseUrl);
 // => https://hatsumode-maker.vercel.app/s/eyJ0Ijoi...
 ```
 
-## 🎯 今後の拡張案
-
-- [ ] おみくじ機能の追加（大吉・吉・凶など）
-- [x] エンジニア向けメッセージ（「今日のPull Request運」など）✅ 実装済み
-- [x] OGP画像の自動生成 ✅ 実装済み（@vercel/og使用）
-- [x] 短縮URLシステム ✅ 実装済み（独自実装）
-- [ ] ジオロケーション対応（近くの神社を優先表示）
-- [ ] 参拝履歴の保存（LocalStorage）
-- [ ] ダークモード/ライトモードの切り替え
-
 ## 📄 ライセンス
 
 MIT
