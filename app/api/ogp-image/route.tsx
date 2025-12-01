@@ -100,7 +100,7 @@ export async function GET(request: Request) {
             <div
               style={{
                 position: 'absolute',
-                top: '505px',
+                top: '530px',
                 fontSize: '28px',
                 color: 'rgba(255, 255, 255, 0.8)',
                 fontFamily: 'Noto Sans JP',
