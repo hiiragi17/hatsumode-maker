@@ -100,7 +100,7 @@ export async function GET(request: Request) {
             <div
               style={{
                 position: 'absolute',
-                top: '505px',
+                top: '530px',
                 fontSize: '28px',
                 color: 'rgba(255, 255, 255, 0.8)',
                 fontFamily: 'Noto Sans JP',
@@ -273,11 +273,6 @@ export async function GET(request: Request) {
       }
     );
   } catch (error) {
-    console.error('OGP image generation failed:', error);
-    console.error('Error details:', {
-      message: error instanceof Error ? error.message : 'Unknown error',
-      stack: error instanceof Error ? error.stack : undefined,
-    });
     return new Response('Failed to generate image', { status: 500 });
   }
 }

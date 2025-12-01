@@ -36,7 +36,7 @@ export default function ShareButton({ temple, comment = 'エンジニア運勢' 
           finalUrl = data.shortUrl;
         }
       } catch (error) {
-        console.error('URL短縮に失敗しました。元のURLを使用します。', error);
+        // URL短縮に失敗した場合は元のURLを使用
       }
 
       // ツイートテキスト
