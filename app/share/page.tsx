@@ -41,10 +41,7 @@ export async function generateMetadata(props: SharePageProps): Promise<Metadata>
       card: 'summary_large_image',
       title: `${temple} | AI初詣メーカー2026`,
       description: `AI初詣メーカー2026であなたの初詣先は「${temple}」に決定しました！`,
-      images: {
-        url: ogpImageUrl.toString(),
-        alt: `${temple}の初詣結果`,
-      },
+      images: [ogpImageUrl.toString()],
     },
   };
 }
