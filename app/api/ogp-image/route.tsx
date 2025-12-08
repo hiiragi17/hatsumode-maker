@@ -51,17 +51,14 @@ export async function GET(request: Request) {
               AI初詣メーカー2026
             </div>
 
-            {/* 鳥居 */}
-            <div style={{ position: 'absolute', top: '190px', left: '450px', display: 'flex', flexDirection: 'column' }}>
-              {/* 上の横木（笠木） */}
-              <div style={{ width: '300px', height: '20px', background: '#dc143c', opacity: 0.9, borderRadius: '3px' }} />
-              {/* 柱と下の横木 */}
-              <div style={{ display: 'flex', position: 'relative', height: '120px' }}>
-                <div style={{ position: 'absolute', left: '30px', width: '15px', height: '120px', background: '#dc143c', opacity: 0.9 }} />
-                <div style={{ position: 'absolute', left: '255px', width: '15px', height: '120px', background: '#dc143c', opacity: 0.9 }} />
-                <div style={{ position: 'absolute', top: '50px', left: '20px', width: '260px', height: '12px', background: '#dc143c', opacity: 0.9, borderRadius: '2px' }} />
-              </div>
-            </div>
+            {/* 鳥居 - 上の横木（笠木） */}
+            <div style={{ position: 'absolute', top: '190px', left: '450px', width: '300px', height: '20px', background: '#dc143c', opacity: 0.9, borderRadius: '3px' }} />
+            {/* 鳥居 - 左の柱 */}
+            <div style={{ position: 'absolute', top: '210px', left: '480px', width: '15px', height: '120px', background: '#dc143c', opacity: 0.9 }} />
+            {/* 鳥居 - 右の柱 */}
+            <div style={{ position: 'absolute', top: '210px', left: '705px', width: '15px', height: '120px', background: '#dc143c', opacity: 0.9 }} />
+            {/* 鳥居 - 下の横木 */}
+            <div style={{ position: 'absolute', top: '260px', left: '470px', width: '260px', height: '12px', background: '#dc143c', opacity: 0.9, borderRadius: '2px' }} />
 
             {/* キャッチコピー */}
             <div
@@ -172,17 +169,14 @@ export async function GET(request: Request) {
             AI初詣メーカー2026
           </div>
 
-          {/* 鳥居 */}
-          <div style={{ position: 'absolute', top: '112px', left: '510px', display: 'flex', flexDirection: 'column' }}>
-            {/* 上の横木（笠木） */}
-            <div style={{ width: '180px', height: '16px', background: '#dc143c', opacity: 0.9, borderRadius: '2px' }} />
-            {/* 柱と下の横木 */}
-            <div style={{ display: 'flex', position: 'relative', height: '90px' }}>
-              <div style={{ position: 'absolute', left: '20px', width: '12px', height: '90px', background: '#dc143c', opacity: 0.9 }} />
-              <div style={{ position: 'absolute', left: '148px', width: '12px', height: '90px', background: '#dc143c', opacity: 0.9 }} />
-              <div style={{ position: 'absolute', top: '38px', left: '15px', width: '150px', height: '10px', background: '#dc143c', opacity: 0.9, borderRadius: '2px' }} />
-            </div>
-          </div>
+          {/* 鳥居 - 上の横木（笠木） */}
+          <div style={{ position: 'absolute', top: '112px', left: '510px', width: '180px', height: '16px', background: '#dc143c', opacity: 0.9, borderRadius: '2px' }} />
+          {/* 鳥居 - 左の柱 */}
+          <div style={{ position: 'absolute', top: '128px', left: '530px', width: '12px', height: '90px', background: '#dc143c', opacity: 0.9 }} />
+          {/* 鳥居 - 右の柱 */}
+          <div style={{ position: 'absolute', top: '128px', left: '658px', width: '12px', height: '90px', background: '#dc143c', opacity: 0.9 }} />
+          {/* 鳥居 - 下の横木 */}
+          <div style={{ position: 'absolute', top: '166px', left: '525px', width: '150px', height: '10px', background: '#dc143c', opacity: 0.9, borderRadius: '2px' }} />
 
           {/* 神社名 */}
           <div
@@ -227,7 +221,6 @@ export async function GET(request: Request) {
               padding: '30px',
             }}
           >
-            {/* エンジニア運勢ラベル */}
             <div
               style={{
                 fontSize: '26px',
@@ -239,8 +232,6 @@ export async function GET(request: Request) {
             >
               エンジニア運勢
             </div>
-
-            {/* コメント */}
             <div
               style={{
                 fontSize: commentFontSize,
