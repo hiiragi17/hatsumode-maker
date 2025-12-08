@@ -83,7 +83,7 @@ export default function ShortUrlPage({ params }: ShortUrlPageProps) {
       <head>
         <meta httpEquiv="refresh" content={`0;url=${shareUrl}`} />
         <script dangerouslySetInnerHTML={{
-          __html: `window.location.href = '${shareUrl}';`
+          __html: `window.location.href = ${JSON.stringify(shareUrl)};`
         }} />
       </head>
       <body>
