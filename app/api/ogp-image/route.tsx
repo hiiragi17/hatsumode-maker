@@ -28,14 +28,14 @@ export async function GET(request: Request) {
             }}
           >
             {/* 装飾的な星 */}
-            <div style={{ position: 'absolute', top: '80px', left: '100px', width: '16px', height: '16px', borderRadius: '50%', background: '#ffd700', opacity: 0.8 }} />
-            <div style={{ position: 'absolute', top: '100px', left: '1100px', width: '12px', height: '12px', borderRadius: '50%', background: '#ffd700', opacity: 0.6 }} />
-            <div style={{ position: 'absolute', top: '550px', left: '1050px', width: '14px', height: '14px', borderRadius: '50%', background: '#ffd700', opacity: 0.7 }} />
-            <div style={{ position: 'absolute', top: '550px', left: '150px', width: '10px', height: '10px', borderRadius: '50%', background: '#ffd700', opacity: 0.5 }} />
-            <div style={{ position: 'absolute', top: '150px', left: '300px', width: '12px', height: '12px', borderRadius: '50%', background: '#ffd700', opacity: 0.7 }} />
-            <div style={{ position: 'absolute', top: '500px', left: '900px', width: '10px', height: '10px', borderRadius: '50%', background: '#ffd700', opacity: 0.6 }} />
-            <div style={{ position: 'absolute', top: '300px', left: '200px', width: '14px', height: '14px', borderRadius: '50%', background: '#ffd700', opacity: 0.5 }} />
-            <div style={{ position: 'absolute', top: '250px', left: '1000px', width: '12px', height: '12px', borderRadius: '50%', background: '#ffd700', opacity: 0.8 }} />
+            <div style={{ display: 'flex', position: 'absolute', top: '80px', left: '100px', width: '16px', height: '16px', borderRadius: '50%', background: '#ffd700', opacity: 0.8 }} />
+            <div style={{ display: 'flex', position: 'absolute', top: '100px', left: '1100px', width: '12px', height: '12px', borderRadius: '50%', background: '#ffd700', opacity: 0.6 }} />
+            <div style={{ display: 'flex', position: 'absolute', top: '550px', left: '1050px', width: '14px', height: '14px', borderRadius: '50%', background: '#ffd700', opacity: 0.7 }} />
+            <div style={{ display: 'flex', position: 'absolute', top: '550px', left: '150px', width: '10px', height: '10px', borderRadius: '50%', background: '#ffd700', opacity: 0.5 }} />
+            <div style={{ display: 'flex', position: 'absolute', top: '150px', left: '300px', width: '12px', height: '12px', borderRadius: '50%', background: '#ffd700', opacity: 0.7 }} />
+            <div style={{ display: 'flex', position: 'absolute', top: '500px', left: '900px', width: '10px', height: '10px', borderRadius: '50%', background: '#ffd700', opacity: 0.6 }} />
+            <div style={{ display: 'flex', position: 'absolute', top: '300px', left: '200px', width: '14px', height: '14px', borderRadius: '50%', background: '#ffd700', opacity: 0.5 }} />
+            <div style={{ display: 'flex', position: 'absolute', top: '250px', left: '1000px', width: '12px', height: '12px', borderRadius: '50%', background: '#ffd700', opacity: 0.8 }} />
 
             {/* タイトル */}
             <div
@@ -52,13 +52,13 @@ export async function GET(request: Request) {
             </div>
 
             {/* 鳥居 - 上の横木（笠木） */}
-            <div style={{ position: 'absolute', top: '190px', left: '450px', width: '300px', height: '20px', background: '#dc143c', opacity: 0.9, borderRadius: '3px' }} />
+            <div style={{ display: 'flex', position: 'absolute', top: '190px', left: '450px', width: '300px', height: '20px', background: '#dc143c', opacity: 0.9, borderRadius: '3px' }} />
             {/* 鳥居 - 左の柱 */}
-            <div style={{ position: 'absolute', top: '210px', left: '480px', width: '15px', height: '120px', background: '#dc143c', opacity: 0.9 }} />
+            <div style={{ display: 'flex', position: 'absolute', top: '210px', left: '480px', width: '15px', height: '120px', background: '#dc143c', opacity: 0.9 }} />
             {/* 鳥居 - 右の柱 */}
-            <div style={{ position: 'absolute', top: '210px', left: '705px', width: '15px', height: '120px', background: '#dc143c', opacity: 0.9 }} />
+            <div style={{ display: 'flex', position: 'absolute', top: '210px', left: '705px', width: '15px', height: '120px', background: '#dc143c', opacity: 0.9 }} />
             {/* 鳥居 - 下の横木 */}
-            <div style={{ position: 'absolute', top: '260px', left: '470px', width: '260px', height: '12px', background: '#dc143c', opacity: 0.9, borderRadius: '2px' }} />
+            <div style={{ display: 'flex', position: 'absolute', top: '260px', left: '470px', width: '260px', height: '12px', background: '#dc143c', opacity: 0.9, borderRadius: '2px' }} />
 
             {/* キャッチコピー */}
             <div
@@ -150,10 +150,10 @@ export async function GET(request: Request) {
           }}
         >
           {/* 装飾的な星 */}
-          <div style={{ position: 'absolute', top: '80px', left: '100px', width: '16px', height: '16px', borderRadius: '50%', background: '#ffd700', opacity: 0.8 }} />
-          <div style={{ position: 'absolute', top: '100px', left: '1100px', width: '12px', height: '12px', borderRadius: '50%', background: '#ffd700', opacity: 0.6 }} />
-          <div style={{ position: 'absolute', top: '550px', left: '1050px', width: '14px', height: '14px', borderRadius: '50%', background: '#ffd700', opacity: 0.7 }} />
-          <div style={{ position: 'absolute', top: '550px', left: '150px', width: '10px', height: '10px', borderRadius: '50%', background: '#ffd700', opacity: 0.5 }} />
+          <div style={{ display: 'flex', position: 'absolute', top: '80px', left: '100px', width: '16px', height: '16px', borderRadius: '50%', background: '#ffd700', opacity: 0.8 }} />
+          <div style={{ display: 'flex', position: 'absolute', top: '100px', left: '1100px', width: '12px', height: '12px', borderRadius: '50%', background: '#ffd700', opacity: 0.6 }} />
+          <div style={{ display: 'flex', position: 'absolute', top: '550px', left: '1050px', width: '14px', height: '14px', borderRadius: '50%', background: '#ffd700', opacity: 0.7 }} />
+          <div style={{ display: 'flex', position: 'absolute', top: '550px', left: '150px', width: '10px', height: '10px', borderRadius: '50%', background: '#ffd700', opacity: 0.5 }} />
 
           {/* タイトル */}
           <div
@@ -170,13 +170,13 @@ export async function GET(request: Request) {
           </div>
 
           {/* 鳥居 - 上の横木（笠木） */}
-          <div style={{ position: 'absolute', top: '112px', left: '510px', width: '180px', height: '16px', background: '#dc143c', opacity: 0.9, borderRadius: '2px' }} />
+          <div style={{ display: 'flex', position: 'absolute', top: '112px', left: '510px', width: '180px', height: '16px', background: '#dc143c', opacity: 0.9, borderRadius: '2px' }} />
           {/* 鳥居 - 左の柱 */}
-          <div style={{ position: 'absolute', top: '128px', left: '530px', width: '12px', height: '90px', background: '#dc143c', opacity: 0.9 }} />
+          <div style={{ display: 'flex', position: 'absolute', top: '128px', left: '530px', width: '12px', height: '90px', background: '#dc143c', opacity: 0.9 }} />
           {/* 鳥居 - 右の柱 */}
-          <div style={{ position: 'absolute', top: '128px', left: '658px', width: '12px', height: '90px', background: '#dc143c', opacity: 0.9 }} />
+          <div style={{ display: 'flex', position: 'absolute', top: '128px', left: '658px', width: '12px', height: '90px', background: '#dc143c', opacity: 0.9 }} />
           {/* 鳥居 - 下の横木 */}
-          <div style={{ position: 'absolute', top: '166px', left: '525px', width: '150px', height: '10px', background: '#dc143c', opacity: 0.9, borderRadius: '2px' }} />
+          <div style={{ display: 'flex', position: 'absolute', top: '166px', left: '525px', width: '150px', height: '10px', background: '#dc143c', opacity: 0.9, borderRadius: '2px' }} />
 
           {/* 神社名 */}
           <div
