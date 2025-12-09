@@ -62,25 +62,25 @@ export default function Home() {
           <div className="text-center space-y-8 animate-fade-in">
             {/* タイトル */}
             <div className="space-y-4">
-              <h1 className="text-5xl md:text-7xl font-bold text-white drop-shadow-2xl">
+              <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold text-white drop-shadow-2xl px-4">
                 🎍 AI初詣メーカー2026
               </h1>
-              <p className="text-xl md:text-2xl text-white/80">
+              <p className="text-lg sm:text-xl md:text-2xl text-white/80 px-4">
                 AIがあなたの初詣先を強制的に決めます
               </p>
             </div>
 
             {/* トーリーのビジュアル */}
-            <div className="my-12">
-              <div className="text-9xl opacity-80 animate-pulse">⛩️</div>
+            <div className="my-8 sm:my-12">
+              <div className="text-7xl sm:text-8xl md:text-9xl opacity-80 animate-pulse">⛩️</div>
             </div>
 
             {/* 説明文 */}
-            <div className="max-w-md mx-auto space-y-4">
-              <p className="text-lg text-white/70">
+            <div className="max-w-md mx-auto space-y-4 px-4">
+              <p className="text-base sm:text-lg text-white/70">
                 2026年の初詣先、決まりましたか？
               </p>
-              <p className="text-lg text-white/70">
+              <p className="text-base sm:text-lg text-white/70">
                 迷っているあなたに、AIが最適な神社を選びます。
               </p>
             </div>
@@ -89,7 +89,7 @@ export default function Home() {
             <button
               onClick={handleChoose}
               disabled={isRolling}
-              className="mt-8 px-12 py-4 bg-shrine-red hover:bg-shrine-darkRed disabled:bg-gray-500 text-white text-xl font-bold rounded-full shadow-2xl transition-all duration-200 transform hover:scale-110 disabled:scale-100 disabled:cursor-not-allowed"
+              className="mt-8 px-8 sm:px-12 py-3 sm:py-4 bg-shrine-red hover:bg-shrine-darkRed disabled:bg-gray-500 text-white text-lg sm:text-xl font-bold rounded-full shadow-2xl transition-all duration-200 transform hover:scale-110 disabled:scale-100 disabled:cursor-not-allowed"
             >
               お任せする 🌠
             </button>
@@ -97,10 +97,10 @@ export default function Home() {
         ) : isRolling ? (
           // 流れ星/天啓演出のローディング画面
           <div className="text-center space-y-8 animate-fade-in">
-            <div className="relative h-96 flex flex-col items-center justify-center overflow-hidden">
+            <div className="relative h-96 flex flex-col items-center justify-center overflow-hidden px-4">
               {/* 流れ星 */}
               <div
-                className="absolute text-8xl transition-all duration-700 ease-out"
+                className="absolute text-6xl sm:text-7xl md:text-8xl transition-all duration-700 ease-out"
                 style={{
                   left: toriiStage === 0 ? '80%' : toriiStage === 1 ? '65%' : toriiStage === 2 ? '52%' : '50%',
                   top: toriiStage === 0 ? '5%' : toriiStage === 1 ? '15%' : toriiStage === 2 ? '28%' : '35%',
@@ -290,7 +290,7 @@ export default function Home() {
               {toriiStage >= 4 && (
                 <>
                   <div
-                    className="absolute text-9xl transition-all duration-1200 ease-out"
+                    className="absolute text-7xl sm:text-8xl md:text-9xl transition-all duration-1200 ease-out"
                     style={{
                       bottom: '15%',
                       opacity: toriiStage >= 4 ? 1 : 0,
@@ -369,13 +369,13 @@ export default function Home() {
             </div>
 
             {/* テキスト */}
-            <p className="text-2xl text-white/90 animate-pulse font-bold drop-shadow-lg">
+            <p className="text-lg sm:text-xl md:text-2xl text-white/90 animate-pulse font-bold drop-shadow-lg px-4">
               {toriiStage < 3 ? '✨ 流れ星が導いています...... ✨' : toriiStage < 4 ? '🌟 あなたの初詣先を探しています...... 🌟' : '⛩️ 神社が見えてきました...... ⛩️'}
             </p>
           </div>
         ) : (
           // 結果画面
-          <div className="w-full max-w-2xl space-y-8 animate-fade-in">
+          <div className="w-full max-w-2xl space-y-8 animate-fade-in px-4">
             <ResultCard temple={selectedTemple!} comment={selectedComment} />
             <ShareButton temple={selectedTemple!} comment={selectedComment} />
 
@@ -383,7 +383,7 @@ export default function Home() {
             <div className="text-center">
               <button
                 onClick={handleReset}
-                className="px-8 py-3 bg-white/10 hover:bg-white/20 text-white font-bold rounded-lg border border-white/30 transition-all duration-200"
+                className="px-6 sm:px-8 py-2 sm:py-3 bg-white/10 hover:bg-white/20 text-white font-bold rounded-lg border border-white/30 transition-all duration-200"
               >
                 もう一度引く
               </button>
@@ -392,8 +392,8 @@ export default function Home() {
         )}
 
         {/* フッター */}
-        <footer className="absolute bottom-4 text-center text-white/50 text-sm">
-          <p>Made with Next.js 14 & Tailwind CSS</p>
+        <footer className="absolute bottom-4 text-center text-white/50 text-sm px-4">
+          <p>&copy; 2026 AI初詣メーカー</p>
         </footer>
       </div>
     </main>
