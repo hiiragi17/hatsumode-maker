@@ -54,11 +54,11 @@ export default function ShareButton({ temple, comment = 'エンジニア運勢' 
   };
 
   return (
-    <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+    <div className="flex flex-col sm:flex-row gap-4 justify-center mt-6 sm:mt-8">
       <button
         onClick={handleShare}
         disabled={isShortening}
-        className="px-6 py-3 bg-blue-500 hover:bg-blue-600 disabled:bg-blue-400 disabled:cursor-wait text-white font-bold rounded-lg shadow-lg transition-all duration-200 transform hover:scale-105 disabled:scale-100"
+        className="px-5 sm:px-6 py-2.5 sm:py-3 bg-blue-500 hover:bg-blue-600 disabled:bg-blue-400 disabled:cursor-wait text-white text-sm sm:text-base font-bold rounded-lg shadow-lg transition-all duration-200 transform hover:scale-105 disabled:scale-100"
       >
         {isShortening ? 'URL短縮中...' : '𝕏 でシェア'}
       </button>
