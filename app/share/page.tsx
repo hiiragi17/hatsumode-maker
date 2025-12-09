@@ -51,23 +51,23 @@ export default function SharePage({ searchParams }: SharePageProps) {
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-gray-900 via-purple-900 to-gray-900 flex items-center justify-center p-4">
-      <div className="text-center space-y-8 max-w-2xl">
-        <h1 className="text-5xl font-bold text-white drop-shadow-2xl">
+      <div className="text-center space-y-6 sm:space-y-8 max-w-2xl w-full px-4">
+        <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold text-white drop-shadow-2xl px-4">
           🎍 AI初詣メーカー2026
         </h1>
 
-        <div className="py-8 space-y-4">
-          <div className="text-9xl opacity-80">⛩️</div>
-          <p className="text-4xl font-bold text-white">{temple}</p>
-          <p className="text-2xl text-shrine-gold">（{area}）</p>
+        <div className="py-6 sm:py-8 space-y-3 sm:space-y-4">
+          <div className="text-7xl sm:text-8xl md:text-9xl opacity-80">⛩️</div>
+          <p className="text-3xl sm:text-4xl md:text-5xl font-bold text-white break-words px-2">{temple}</p>
+          <p className="text-xl sm:text-2xl text-shrine-gold">（{area}）</p>
         </div>
 
-        <div className="px-8 py-6 bg-white/5 rounded-lg border border-shrine-gold/30">
-          <p className="text-sm text-shrine-gold/80 mb-3 font-bold">💻 エンジニア運勢</p>
-          <p className="text-xl text-white/90">{comment}</p>
+        <div className="px-4 sm:px-6 md:px-8 py-4 sm:py-6 bg-white/5 rounded-lg border border-shrine-gold/30">
+          <p className="text-xs sm:text-sm text-shrine-gold/80 mb-2 sm:mb-3 font-bold">💻 エンジニア運勢</p>
+          <p className="text-base sm:text-lg md:text-xl text-white/90 break-words">{comment}</p>
         </div>
 
-        <div className="flex justify-center items-center space-x-4 text-3xl">
+        <div className="flex justify-center items-center space-x-3 sm:space-x-4 text-2xl sm:text-3xl">
           <span>🎍</span>
           <span>🎌</span>
           <span>🎍</span>
@@ -77,7 +77,7 @@ export default function SharePage({ searchParams }: SharePageProps) {
 
         <a
           href="/"
-          className="inline-block px-8 py-3 bg-shrine-red hover:bg-shrine-darkRed text-white font-bold rounded-lg shadow-lg transition-all duration-200"
+          className="inline-block px-6 sm:px-8 py-2 sm:py-3 bg-shrine-red hover:bg-shrine-darkRed text-white font-bold rounded-lg shadow-lg transition-all duration-200"
         >
           ← もう一度引く
         </a>
