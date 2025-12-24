@@ -21,8 +21,8 @@ describe('OGP画像生成API', () => {
 
     it('特殊文字を含む神社名が正しくエンコードされること', () => {
       const baseUrl = 'https://hatsumode-maker.vercel.app';
-      const temple = '明治神宮 & 伊勢神宮';
-      const area = '東京 / 三重';
+      const temple = '教王護国寺（東寺）';
+      const area = '京都';
       const comment = 'テスト用コメント（特殊文字：!@#$%）';
 
       const ogpImageUrl = new URL(`${baseUrl}/api/ogp-image`);
@@ -79,8 +79,8 @@ describe('OGP画像生成API', () => {
 
   describe('OGPメタデータの構造', () => {
     it('必要なOGPプロパティが定義されていること', () => {
-      const temple = '浅草寺';
-      const area = '東京';
+      const temple = '平安神宮';
+      const area = '京都';
       const comment = 'デプロイが成功する運勢';
       const baseUrl = 'https://hatsumode-maker.vercel.app';
       const shortId = 'test123';
