@@ -40,6 +40,7 @@ export async function GET(request: Request) {
             {/* タイトル */}
             <div
               style={{
+                display: 'flex',
                 position: 'absolute',
                 top: '100px',
                 fontSize: '64px',
@@ -72,6 +73,7 @@ export async function GET(request: Request) {
             >
               <div
                 style={{
+                  display: 'flex',
                   fontSize: '52px',
                   fontWeight: 'bold',
                   color: '#d4af37',
@@ -83,6 +85,7 @@ export async function GET(request: Request) {
               </div>
               <div
                 style={{
+                  display: 'flex',
                   fontSize: '52px',
                   fontWeight: 'bold',
                   color: '#d4af37',
@@ -96,6 +99,7 @@ export async function GET(request: Request) {
             {/* サブテキスト */}
             <div
               style={{
+                display: 'flex',
                 position: 'absolute',
                 top: '530px',
                 fontSize: '28px',
@@ -109,6 +113,7 @@ export async function GET(request: Request) {
             {/* フッター */}
             <div
               style={{
+                display: 'flex',
                 position: 'absolute',
                 bottom: '20px',
                 fontSize: '20px',
@@ -158,6 +163,7 @@ export async function GET(request: Request) {
           {/* タイトル */}
           <div
             style={{
+              display: 'flex',
               position: 'absolute',
               top: '50px',
               fontSize: '48px',
@@ -181,6 +187,7 @@ export async function GET(request: Request) {
           {/* 神社名 */}
           <div
             style={{
+              display: 'flex',
               position: 'absolute',
               top: '240px',
               fontSize: '72px',
@@ -195,6 +202,7 @@ export async function GET(request: Request) {
           {/* 地域 */}
           <div
             style={{
+              display: 'flex',
               position: 'absolute',
               top: '320px',
               fontSize: '40px',
@@ -223,6 +231,7 @@ export async function GET(request: Request) {
           >
             <div
               style={{
+                display: 'flex',
                 fontSize: '26px',
                 fontWeight: 'bold',
                 color: '#d4af37',
@@ -234,6 +243,7 @@ export async function GET(request: Request) {
             </div>
             <div
               style={{
+                display: 'flex',
                 fontSize: commentFontSize,
                 color: 'white',
                 fontFamily: 'Noto Sans JP',
@@ -247,6 +257,7 @@ export async function GET(request: Request) {
           {/* フッター */}
           <div
             style={{
+              display: 'flex',
               position: 'absolute',
               bottom: '20px',
               fontSize: '20px',
